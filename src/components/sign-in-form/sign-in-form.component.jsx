@@ -24,23 +24,18 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+  const signInGoogleUser = async () => {
+    await signInWithGooglePopup();
+    // setCurrentUser(user);
   };
-
-  // const logUserWithEmail = async () => {
-  //   const { user } = await signInAuthUserWithEmailAndPw(email, password);
-  //   console.log(user);
-  //   await createUserDocumentFromAuth(user);
-  // };
 
   const logUserWithEmail = async (event) => {
     event.preventDefault();
 
     try {
       const { user } = await signInAuthUserWithEmailAndPw(email, password);
-      console.log(user);
+      // setCurrentUser(user);
+
       await createUserDocumentFromAuth(user);
       resetFormFields();
     } catch (error) {
@@ -89,7 +84,7 @@ const SignInForm = () => {
           <Button type="submit" onClick={logUserWithEmail}>
             Sign In
           </Button>
-          <Button type="button" buttonType="google" onClick={logGoogleUser}>
+          <Button type="button" buttonType="google" onClick={signInGoogleUser}>
             Sign in with Google
           </Button>
         </div>
