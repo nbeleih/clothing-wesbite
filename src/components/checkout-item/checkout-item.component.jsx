@@ -21,7 +21,9 @@ const CheckoutItem = ({ item }) => {
   const decreaseHandler = () => decreaseCartItemQty(item);
   return (
     <CheckoutItemContainer>
-      <ImageContainer src={imageUrl} alt={name} />
+      <ImageContainer>
+        <img src={imageUrl} alt={name} />
+      </ImageContainer>
       <BaseSpan>{name}</BaseSpan>
       <Quantity>
         <Arrow onClick={decreaseHandler}>&#10094;</Arrow>
